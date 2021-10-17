@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="./style.css">
+    <script src="calendar.js" charset="utf-8"></script>
+    <title>Abbie's JS Project</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Abbie's JS Project</h1>
+    </header>
+
+    <h2>My Itinerary</h2>
+    <label for="calendarName">Calendar Name:</label>
+    <input type="text" id="calendarName" name="calendarName">
+    <br>
+    <label for="start">Start date:</label>
+    <input type="date" id="calendarStart" name="calendarStart">
+    <br>
+    <label for="end">End date:</label>
+    <input type="date" id="calendarEnd" name="calendarEnd">
+    <br><br>
+    <button type="button" id="createCalendar"> Create Your Calendar</button>
+
+    <h2>Plans</h2>
+    <label for="planName">Name:</label>
+    <input type="text" id="planName" name="planName">
+    <br>
+    <label for="planDuration">Duration (in minutes):</label>
+    <input type="number" id="planDuration" name="planDuration">
+    <br>
+    <label for="planNotes">Notes:</label>
+    <input type="text" id="planNotes" name="planNotes">
+    <br><br>
+    <button type="button" id="createPlan"> Add Your Plan</button>
+
+    <div id="calendarConfirmation">
+
+    </div>
+
+  </body>
+  <script src="index.js" charset="utf-8"></script>
+</html>
