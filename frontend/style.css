@@ -10,3 +10,11 @@ h1 {
 h2 {
     color: rgb(29, 131, 187, 1);
 }
+
+h3 {
+    color: rgb(22, 87, 124);
+}
+
+table, th, td {
+    border: 1px solid black;
+  }

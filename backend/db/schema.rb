@@ -22,9 +22,10 @@ ActiveRecord::Schema.define(version: 2021_10_15_195656) do
 
   create_table "plans", force: :cascade do |t|
     t.string "name"
+    t.date "date"
+    t.string "start_time"
     t.integer "duration"
     t.string "notes"
-    t.datetime "start_time"
     t.integer "calendar_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

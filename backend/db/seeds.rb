@@ -9,7 +9,6 @@ require 'date'
 
 calendar_a = Calendar.create(name: "Abbie's Test Holiday", start_date: Date.new(2021,11,01), end_date: Date.new(2021,11,05))
 
-plan_a = Plan.create(name: "Breakfast", duration: 30, notes: "Cereal", start_time: DateTime.new(2021,11,01,9,30), calendar: calendar_a)
-plan_b = Plan.create(name: "Shopping", duration: 90, notes: "Supplies", start_time: DateTime.new(2021,11,01,13,30), calendar: calendar_a)
-
+plan_a = Plan.create(name: "Breakfast", date: Date.new(2021, 11, 3), start_time: "09:00", duration: 1, notes: "Cereal",  calendar: calendar_a)
+plan_b = Plan.create(name: "Shopping", date: Date.new(2021, 11, 3), start_time: "13:00", duration: 3, notes: "Supplies",  calendar: calendar_a)
 
