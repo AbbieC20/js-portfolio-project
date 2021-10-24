@@ -1,20 +1,54 @@
 body {
-    margin: 5% 10%;
-    background-color: rgb(191, 220, 236, 1);
+    margin: 5% 5%;
+    background-color:rgb(165,157,189);
+    font-family: 'Roboto Condensed', sans-serif;
   }
 
 h1 {
-    color: rgb(4, 108, 164, 1);
+    color:rgb(160,65,33);
+    font-size: 2.5em;
 }
 
 h2 {
-    color: rgb(29, 131, 187, 1);
+    color: 	rgb(184, 53, 10);
+    font-size: 1.5em;
+    margin: 20px 0px 5px 0px;
 }
 
 h3 {
-    color: rgb(22, 87, 124);
+    color: rgb(106, 43, 22);
+    font-size: 1em;
+}
+
+label {
+    font-size: 0.9em;
+    color: rgb(141, 75, 53);
+}
+
+button {
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 table, th, td {
-    border: 1px solid black;
+    font-size: 1em;
+    font-weight: lighter;
+    border: 1px solid rgb(45, 39, 63);
+    min-width: 38px;
+    max-width: 38px;
+}
+
+td:first-of-type {
+    font-size: 1em;
+    font-weight: bold;
+    min-width: 80px;
+    max-width: 80px;
   }
+
+#planContainer {
+    padding-top: 20px;
+    text-align: center;
+}
+
+.planHeaderStyle {
+    font-weight: bold;
+}

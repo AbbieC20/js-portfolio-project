@@ -10,10 +10,15 @@ class Plan {
 
     draw (element) {
         const planContainer = document.createElement("div");
-        const planName = document.createTextNode(`${this.name}: `);
-        const planDateTime = document.createTextNode(`This is happening on ${this.date.toLocaleDateString()} at ${this.startTime}`);
-        const planDuration = document.createTextNode(`This will last for ${this.duration} hours. `);
-        const planNotes = document.createTextNode(`Notes = ${this.notes}`);
+        const planName = document.createElement("p");
+        planName.textContent = `Plan: ${this.name}`;
+        planName.classList.add("planHeaderStyle");
+        const planDateTime = document.createElement("p");
+        planDateTime.textContent = `This is happening on ${this.date.toLocaleDateString()} at ${this.startTime}`;
+        const planDuration = document.createElement("p");
+        planDuration.textContent = `Duration (in hours): ${this.duration}`;
+        const planNotes = document.createElement("p");
+        planNotes.textContent = `Notes: ${this.notes}`;
 
         planContainer.appendChild(planName);
         planContainer.appendChild(planDateTime);

@@ -1,5 +1,5 @@
 const dayTimes = [
-    "Day",
+    "12am",
     "1am",
     "2am",
     "3am",
@@ -11,7 +11,7 @@ const dayTimes = [
     "9am",
     "10am",
     "11am",
-    "Midday",
+    "12pm",
     "1pm",
     "2pm",
     "3pm",
@@ -23,7 +23,6 @@ const dayTimes = [
     "9pm",
     "10pm",
     "11pm",
-    "Midnight",
 ]
 
 const weekdays = [
@@ -42,6 +41,7 @@ class Calendar {
         this.name = name;
         this.startDate = new Date(startDate);
         this.endDate = new Date (endDate);
+        this.plans = {};
     }
 
     draw(element) {
@@ -63,9 +63,12 @@ class Calendar {
 
     populateHeader(header) {
         const row = header.insertRow(0);
+        const cell1 = row.insertCell(0);
+        cell1.innerHTML = "Day";
+
 
         dayTimes.forEach((text, index) => {
-            const cell = row.insertCell(index);
+            const cell = row.insertCell(index + 1);
             cell.innerHTML = text;
         })
     }
@@ -76,9 +79,18 @@ class Calendar {
         const cell1 = row.insertCell(0);
         cell1.innerHTML = dayName;
 
-        for (let i = 1; i < dayTimes.length; i++) {
-            const cell = row.insertCell(i);
+        for (let i = 0; i < dayTimes.length; i++) {
+            const cell = row.insertCell(i+1);
             cell.setAttribute('id', `row-${rowIndex}-cell-${i}`);
+            this.plans[`row-${rowIndex}-cell-${i}`] = [];
+
+            cell.addEventListener("click", () => {
+                document.getElementById("planContainer").innerHTML = "";
+                this.plans[`row-${rowIndex}-cell-${i}`].forEach((plan) => {
+                    plan.draw(document.getElementById("planContainer"));
+                })
+                
+            })
         }
     }
 
@@ -89,18 +101,25 @@ class Calendar {
 
     addPlan(plan) {
         const MS_PER_DAY = 1000 * 60 * 60 * 24;
-        const calendarRow = Math.floor((plan.date - this.startDate) / MS_PER_DAY );
+        const startRow = Math.floor((plan.date - this.startDate) / MS_PER_DAY );
 
         const hourString = plan.startTime.split(":")[0];
-        const hourNumber = parseInt(hourString, 10);
+        const startHour = parseInt(hourString, 10);
 
         for (let i = 0; i < plan.duration; i++) {
-            const cellIndex = hourNumber + i;
-            document.getElementById(`row-${calendarRow}-cell-${cellIndex}`).style.backgroundColor = "red"
-            document.getElementById(`row-${calendarRow}-cell-${cellIndex}`).addEventListener("click", () => {
-                console.log(plan.name);
-                plan.draw(document.getElementById("planContainer"));
-            })
+            const cellIndex = startHour + i;
+            const row = startRow + Math.floor(cellIndex / dayTimes.length);
+            const cell = cellIndex % dayTimes.length;
+            const cellID = `row-${row}-cell-${cell}`;
+            this.plans[cellID].push(plan);
+            
+            const cellElement = document.getElementById(cellID)
+            
+            if (this.plans[cellID].length === 1) {
+                cellElement.style.backgroundColor = "#1c9306"
+            } else {
+                cellElement.style.backgroundColor = "##a04121"
+            }
         }
     }
 
