@@ -5,6 +5,11 @@ class CalendarsController < ApplicationController
         render json: calendar, only: [:name, :start_date, :end_date, :id]
     end
 
+    def index
+        calendars = Calendar.all
+        render json: calendars, only: [:name, :start_date, :end_date, :id]
+    end
+
     private
 
     def create_calendar_params

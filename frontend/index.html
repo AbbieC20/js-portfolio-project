@@ -25,37 +25,50 @@
     </div>
 
     <br>
+    <div id="calendarInitialiser">
+      <label for="calendarName">Calendar Name:</label>
+      <input type="text" id="calendarName" name="calendarName">
+      <br>
+      <label for="start">Start date:</label>
+      <input type="date" id="calendarStart" name="calendarStart">
+      <br>
+      <label for="end">End date:</label>
+      <input type="date" id="calendarEnd" name="calendarEnd">
+      <br><br>
+      <button type="button" id="createCalendar"> Create Your Calendar</button>
+    </div>
 
-    <label for="calendarName">Calendar Name:</label>
-    <input type="text" id="calendarName" name="calendarName">
-    <br>
-    <label for="start">Start date:</label>
-    <input type="date" id="calendarStart" name="calendarStart">
-    <br>
-    <label for="end">End date:</label>
-    <input type="date" id="calendarEnd" name="calendarEnd">
+    <div id="newPlan" style="display:none">
+      <h2>Plans</h2>
+      <h3><i>Please use this to log all your plans to add to the Itinerary </i></h3>
+      <label for="planName">Name:</label>
+      <input type="text" id="planName" name="planName">
+      <br>
+      <label for="planDate">Date:</label>
+      <input type="date" id="planDate" name="planDate">
+      <br>
+      <label for="planStartTime">Start Time:</label>
+      <input type="time" id="planStartTime" name="planStartTime" step="3600">
+      <br>
+      <label for="planDuration">Duration (in hours):</label>
+      <input type="number" id="planDuration" name="planDuration">
+      <br>
+      <label for="planNotes">Notes:</label>
+      <input type="text" id="planNotes" name="planNotes">
+      <br><br>
+      <button type="button" id="createPlan"> Add Your Plan</button>
+    </div>
+
     <br><br>
-    <button type="button" id="createCalendar"> Create Your Calendar</button>
+    <label for="calendarSelector"> Select a previously created Itinerary: </label>
+    <select name="calendarSelector" id="calendarSelector">
+      <option value="-1">Select here</option>
+    </select>
 
-    <h2>Plans</h2>
-    <h3><i>Please use this to log all your plans to add to the Itinerary </i></h3>
-    <label for="planName">Name:</label>
-    <input type="text" id="planName" name="planName">
-    <br>
-    <label for="planDate">Date:</label>
-    <input type="date" id="planDate" name="planDate">
-    <br>
-    <label for="planStartTime">Start Time:</label>
-    <input type="time" id="planStartTime" name="planStartTime">
-    <br>
-    <label for="planDuration">Duration (in hours):</label>
-    <input type="number" id="planDuration" name="planDuration">
-    <br>
-    <label for="planNotes">Notes:</label>
-    <input type="text" id="planNotes" name="planNotes">
-    <br><br>
-    <button type="button" id="createPlan"> Add Your Plan</button>
-
+    <div id="newCalendar" style="display:none">
+      <button type="button" id="createNewCalendar"> Create a New Calendar</button>
+    </div>
+    
+    <script src="index.js" charset="utf-8"></script>
   </body>
-  <script src="index.js" charset="utf-8"></script>
 </html>

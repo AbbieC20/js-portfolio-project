@@ -10,9 +10,9 @@ h1 {
 }
 
 h2 {
-    color: 	rgb(184, 53, 10);
+    color: rgb(184, 53, 10);
     font-size: 1.5em;
-    margin: 20px 0px 5px 0px;
+    margin: 20px 0px 0px 0px;
 }
 
 h3 {
@@ -51,4 +51,9 @@ td:first-of-type {
 
 .planHeaderStyle {
     font-weight: bold;
+    color: darkblue;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    display: none;
 }
