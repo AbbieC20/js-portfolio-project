@@ -75,7 +75,7 @@ class Calendar {
             if (plans.length === 1) { // logic to colour in cells, based on how many plans they contain
                 cellElement.style.backgroundColor = "#c7826b"
             } else if (plans.length > 1) {
-                cellElement.style.backgroundColor = "#b8350a"
+                cellElement.style.backgroundColor = "#802F1F"
             } else {
                 cellElement.style.backgroundColor = "none"
             }
