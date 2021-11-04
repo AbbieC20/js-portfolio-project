@@ -10,6 +10,12 @@ const newPlan = document.getElementById("newPlan") // div
 const createNewCalendar = document.getElementById("newCalendar") // div
 const calendarSelector = document.getElementById("calendarSelector") // drop down
 
+const updatePlanDates = () => {
+    const planDateElement = document.getElementById("planDate"); 
+    planDateElement.setAttribute("min", activeCalendar.startDate.toISOString().slice(0, 10)); // once we have Start & End date of a calendar, we update entry parameters for our plans
+    planDateElement.setAttribute("max", activeCalendar.endDate.toISOString().slice(0, 10));
+}
+
 
 // method to retrieve all our calendars from the backend. We can see this through HTTP verb & URL
 fetch("http://localhost:3000/calendars", {
@@ -34,9 +40,7 @@ calendarSelector.addEventListener("change", () => {
         activeCalendar.draw(calendarDiv); // created on calendar.JS, but designed to draw the calendar within specified element on page
         activeCalendar.fetchPlans(); // created on calendar.JS, but designed to pull plans linked to calendar
         activeCalendar.drawCells(); // this ensures when we click on dropdown option, the cells show correctly
-        const planDateElement = document.getElementById("planDate"); 
-        planDateElement.setAttribute("min", activeCalendar.startDate.toISOString().slice(0, 10)); // once we have Start & End date of a calendar, we update entry parameters for our plans
-        planDateElement.setAttribute("max", activeCalendar.endDate.toISOString().slice(0, 10));
+        updatePlanDates(); 
         document.getElementById("planContainer").innerHTML = ""; // clears plans shown
         newPlan.style.display = "block"; // shows html to create a plan
         calendarInitialiser.style.display = "none"; // within this flow, after calendar retrieved, hide 'Create Calendar' hidden
@@ -68,9 +72,7 @@ document.getElementById("createCalendar").addEventListener("click", () => { // w
         .then((data) => { // data returned back to us, now with ID (as assigned in database)
             itineraries[data.id] = new Calendar(data, true); // storing this calendar in the itineraries object. Storing in here allows us to access this from dropdown
             activeCalendar = itineraries[data.id]; // setting AC as new instance of calendar, with this data - referring to above line
-            const planDateElement = document.getElementById("planDate"); 
-            planDateElement.setAttribute("min", activeCalendar.startDate.toISOString().slice(0, 10)); // once we have Start & End date of a calendar, we update entry parameters for our plans
-            planDateElement.setAttribute("max", activeCalendar.endDate.toISOString().slice(0, 10));
+            updatePlanDates(); 
             // on creating new calendar, we add option to dropdown
             const opt = document.createElement('option'); // for each calendar, we are creating a drop-down option element
             opt.value = activeCalendar.id; // value that codes see, when user selects option
@@ -88,12 +90,20 @@ document.getElementById("createCalendar").addEventListener("click", () => { // w
 
 
 document.getElementById("createPlan").addEventListener("click", () => { // when user clicks 'Add Your Plan' button
+
+    const planName = document.getElementById("planName");
+    const planDate = document.getElementById("planDate");
+    const planStartTime = document.getElementById("planStartTime");
+    const planDuration = document.getElementById("planDuration");
+    const planNotes = document.getElementById("planNotes");
+
+
     const planData = { // take the user input from page and place it in key/value object
-        name: document.getElementById("planName").value,
-        planDate: document.getElementById("planDate").value,
-        startTime: document.getElementById("planStartTime").value,
-        duration: document.getElementById("planDuration").value,
-        notes: document.getElementById("planNotes").value,
+        name: planName.value,
+        planDate: planDate.value,
+        startTime: planStartTime.value,
+        duration: planDuration.value,
+        notes: planNotes.value,
         calendarId: activeCalendar.id,
     }
     
@@ -115,11 +125,11 @@ document.getElementById("createPlan").addEventListener("click", () => { // when 
         plans.push(tempPlan); // adding this into plan array 
         activeCalendar.addPlan(tempPlan); // created on calendar.js, this funcitonality draws plan onto calendar on page
         // this clears the input fields on the page, for user to re-use
-        document.getElementById("planName").value = ""; 
-        document.getElementById("planDate").value = "";
-        document.getElementById("planStartTime").value = "";
-        document.getElementById("planDuration").value = "";
-        document.getElementById("planNotes").value = "";
+        planName.value = ""; 
+        planDate.value = "";
+        planStartTime.value = "";
+        planDuration.value = "";
+        planNotes.value = "";
     })
 })
 
