@@ -1,24 +1,17 @@
-# README
+# Flatiron-JavaScript-Project
+Flatiron JavaScriptProject
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Objectives 
+Build a Single Page Application (SPA) - the frontend will be built with HTML, CSS, and JavaScript. The backend will be built with Ruby and Rails. 
 
-Things you may want to cover:
+I have chosen to create a SPA which allows users to create calendars / itineraries for organising. 
 
-* Ruby version
 
-* System dependencies
+### Contributing Guide
+When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
 
-* Configuration
+### Author
+Abbie Cornelius (November 2021)
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### License
+This project is licensed under the MIT License - see the LICENSE.md file for details. 
